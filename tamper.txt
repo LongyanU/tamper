@@ -1,0 +1,13 @@
+taper=ones(nz,nx);
+for i=1:50
+    for j=1:nx
+        taper(i,j)=0.5-0.5*cos(pi*(i-1)/(50-1));
+        taper(nz-i+1,j)=taper(i,j);
+    end
+end
+for i=1:nz
+    for j=1:50
+        taper(i,j)=taper(i,j)*(0.5-0.5*cos(pi*(j-1)/(50-1)));
+        taper(i,nx-j+1)=taper(i,j);
+    end
+end
